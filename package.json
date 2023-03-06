@@ -1,0 +1,23 @@
+{
+  "name": "@sx9dev/web.sh",
+  "version": "1.0.0",
+  "description": "Access Your Terminal From Anywhere",
+  "bin": {
+    "web-sh": "index.js"
+  },
+  "type": "module",
+  "author": "sx9dev",
+  "license": "ISC",
+  "keywords": [
+    "terminal"
+  ],
+  "scripts": {
+    "test": "nodemon index.js --ignore logs.json"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "cors": "^2.8.5",
+    "execa": "^5.1.1",
+    "express": "^4.18.2"
+  }
+}
