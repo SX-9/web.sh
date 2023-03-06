@@ -37,7 +37,7 @@ app.get('/', (req, res) => res.json({
 }));
 
 app.post('/run', async (req, res) => {
-    if (!req.body.exec) return res.status(400).json({ message: 'Ececution Failed' });
+    if (!!req.body.exec) return res.status(400).json({ message: 'Ececution Failed' });
     if (req.query.pass !== pass) {
         console.log(c.red(c.bold('Wrong Password: ') + req.query.pass));
         res.status(401).json({ message: 'Access Denied' });
@@ -73,3 +73,5 @@ app.listen(6942, () => {
         c.blue('Port ' + c.underline('6942')), '\n'
     );
 });
+
+process.on('exit', () => fs.writeFileSync('./logs.json', JSON.stringify(logs, null, 2)));
