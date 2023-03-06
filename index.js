@@ -37,6 +37,7 @@ app.get('/', (req, res) => res.json({
 }));
 
 app.post('/run', async (req, res) => {
+    if (!req.body.exec) return res.status(400).json({ message: 'Ececution Failed' });
     if (req.query.pass !== pass) {
         console.log(c.red(c.bold('Wrong Password: ') + req.query.pass));
         res.status(401).json({ message: 'Access Denied' });

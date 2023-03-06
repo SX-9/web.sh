@@ -1,6 +1,6 @@
 {
   "name": "@sx9dev/web.sh",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Access Your Terminal From Anywhere",
   "bin": {
     "web-sh": "index.js"
