@@ -1,6 +1,6 @@
 {
   "name": "@sx9dev/web.sh",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Access Your Terminal From Anywhere",
   "bin": {
     "web-sh": "index.js"
@@ -12,13 +12,15 @@
     "terminal"
   ],
   "scripts": {
-    "test": "nodemon index.js --ignore logs.json"
+    "test": "nodemon index.js"
   },
   "dependencies": {
     "chalk": "^5.2.0",
     "cors": "^2.8.5",
     "execa": "^5.1.1",
-    "express": "^4.18.2",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.21"
   }
 }

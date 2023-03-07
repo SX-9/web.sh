@@ -4,6 +4,7 @@ import express from 'express';
 import cors from 'cors';
 import execa from 'execa';
 import c from 'chalk';
+import os from 'os';
 
 const pass = process.env.PASSWORD || 'HelloWorld';
 const app = express();
@@ -56,7 +57,7 @@ app.post('/run', async (req, res) => {
             res.json({
                 message: 'Success',
                 outputs: out.toString(),
-                host: process.env.USER + ' @ ' + process.hostname
+                host: os.userInfo().username + '@' + os.hostname()
             });
         });
         console.log(c.green(c.bold('Success!')));

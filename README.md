@@ -1,5 +1,5 @@
 # web.sh
 Access Your Terminal From Anywhere
 ```
-npx @sx9dev/web.sh@latest
+sudo npm i -g @sx9dev/web.sh@latest
 ```
