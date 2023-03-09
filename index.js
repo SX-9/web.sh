@@ -58,10 +58,10 @@ app.post('/run', (req, res) => {
         res.json({
             message: 'Success',
             status: out.exitCode,
-            outputs: out.stdout || out.stderr,
+            output: out.stdout || out.stderr,
             host: os.userInfo().username + '@' + os.hostname()
         });
-        console.log(c.green(c.bold('Success!')));
+        console.log(c.green(c.bold('Success!\n')));
     } catch (e) {
         console.log(c.red(c.bold('Error: ') + e.message));
         res.json({ message: 'Failed', error: e.message });
