@@ -9,7 +9,11 @@ import os from 'os';
 const pass = process.env.PASSWORD || 'HelloWorld';
 const app = express();
 
-app.use(cors({ origin: ['https://web-sh.sx9.is-a.dev', 'http://web-sh.sx9.is-a.dev'] }));
+app.use(cors({ origin: [
+	'https://web-sh.sx9.is-a.dev',
+	'http://web-sh.sx9.is-a.dev',
+	'http://127.0.0.1:5500'
+]}));
 app.use(express.json());
 
 app.use((req, res, next) => {
