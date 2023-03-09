@@ -2,14 +2,14 @@
 
 import express from 'express';
 import cors from 'cors';
-import execa from 'execa';
+import { execaSync } from 'execa';
 import c from 'chalk';
 import os from 'os';
 
 const pass = process.env.PASSWORD || 'HelloWorld';
 const app = express();
 
-app.use(cors({ origin: '*' }));
+app.use(cors({ origin: ['https://web-sh.sx9.is-a.dev', 'http://web-sh.sx9.is-a.dev'] }));
 app.use(express.json());
 
 app.use((req, res, next) => {
@@ -37,28 +37,25 @@ app.get('/', (req, res) => res.json({
     }
 }));
 
-app.post('/run', async (req, res) => {
-    if (!req.body.exec) return res.status(400).json({ message: 'Ececution Failed' });
+app.post('/run', (req, res) => {
+    if (!req.body.exec) return res.status(400).json({ message: 'Execution Failed' });
     if (req.query.pass !== pass) {
         console.log(c.red(c.bold('Wrong Password: ') + req.query.pass));
         res.status(401).json({ message: 'Access Denied' });
         return;
     }
     
-    console.log(c.blue(c.bold('Running: ') + req.body.exec));
+    console.log(c.blue(c.bold('Running: ') + req.body.exec + ' ' + req.body.args.join(' ')));
     let out;
     
     try {
-        let stop = false;
-        await execa(req.body.exec, req.body.args).stdout?.on('data', out => {
-            if (stop) return;
-            stop = true;
-            console.log(out.toString());
-            res.json({
-                message: 'Success',
-                outputs: out.toString(),
-                host: os.userInfo().username + '@' + os.hostname()
-            });
+        out = execaSync(req.body.exec, req.body.args);
+        console.log(out.stdout || out.stderr);
+        res.json({
+            message: 'Success',
+            status: out.exitCode,
+            outputs: out.stdout || out.stderr,
+            host: os.userInfo().username + '@' + os.hostname()
         });
         console.log(c.green(c.bold('Success!')));
     } catch (e) {
@@ -70,7 +67,8 @@ app.post('/run', async (req, res) => {
 app.listen(6942, () => {
     console.clear();
     console.log(
-        c.green(c.bold('Started')), c.grey(' @ '),
-        c.blue('Port ' + c.underline('6942')), '\n'
+        c.green(c.bold('\nStarted')), c.grey(' @ '),
+        c.blue('Port ' + c.underline('6942')), 
+        c.yellow(c.bold('\n* New Dashboard') + ' @ ' + c.underline('https://web-sh.sx9.is-a.dev')), '\n'
     );
 });
