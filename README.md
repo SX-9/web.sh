@@ -8,7 +8,7 @@ sudo npm i -g @sx9dev/web.sh@latest && web-sh
 
 Heres How You Can Do This On Your Linux Machine:
 
-![](https://media.discordapp.net/attachments/888341509076824067/1092058402596868267/Videoleap_2023_04_02_19_05_04_429.mp4)
+![](video.mp4)
 
 1. Install Web.Sh (On Host)
 
