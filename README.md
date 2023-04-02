@@ -4,11 +4,9 @@ Access Your Terminal From Anywhere
 sudo npm i -g @sx9dev/web.sh@latest && web-sh
 ```
 
-# Example Use: Remotly Shutdown Linux
+# Example Use: Remote Shutdown Linux
 
 Heres How You Can Do This On Your Linux Machine:
-
-![](video.mp4)
 
 1. Install Web.Sh (On Host)
 
