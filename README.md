@@ -1,30 +1,23 @@
 # web.sh
 Access Your Terminal From Anywhere
-```
+```bash
+# Install:
 sudo npm i -g @sx9dev/web.sh@latest && web-sh
 ```
+# Docs
 
-# Example Use: Remote Shutdown Linux
-
-Heres How You Can Do This On Your Linux Machine:
-
-1. Install Web.Sh (On Host)
-
-Ill Assume You Already Have It Instaled.<br>
-**Note**: Use Systemd (Or Any Init System) To Launch Web.sh On Startup.
-
+## Setup Autostart
+To Run Web.Sh On Startup Do This (**Linux Only**):
+```bash
+web-sh setup
+systemctl enable websh --user --now
+```
 ---
+## Running A Command
 
-2. Install Tailscale (On Both)
+To Run A Command Send The Following Request:
 
-To Make Sure You Can Do This From Anywhere Install Tailscale On Both Your Phone (Client) And Your Linux Machine (Host)
-
----
-
-3. Install An HTTP Client (On Client)
-
-Configure Your HTTP Client To Send A Request To Our Host IP And Run The Shutdown Command
-
----
-
-Now Try And Test It
+**POST** /run?pass=_PASSWORD_
+```json
+["COMMAND_OR_EXECUTABLE", "ARG1", "ARG2", "AGRS"]
+```
