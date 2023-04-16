@@ -24,7 +24,7 @@ Description=Autostart Web.Sh
 ExecStart=/usr/bin/web-sh
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 `);
     console.log(c.cyan('Setup Complete! Now Run: systemctl enable websh.service --user --now'));
     process.exit(0);

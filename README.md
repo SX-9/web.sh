@@ -19,5 +19,5 @@ To Run A Command Send The Following Request:
 
 **POST** /run?pass=_PASSWORD_
 ```json
-["COMMAND_OR_EXECUTABLE", "ARG1", "ARG2", "AGRS"]
+["COMMAND_OR_EXECUTABLE", "ARG1", "ARG2", "ARGS"]
 ```
