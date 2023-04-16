@@ -15,7 +15,7 @@ if (process.argv[2] === 'setup') {
     let dir = '/home/' + os.userInfo().username + '/.config/systemd/user';
     if (process.platform !== 'linux') process.exit(1);
     if (process?.getuid() === 0) process.exit(1);
-    if (fs.existsSync('/usr/bin/web-sh')) console.log(c.yellow('Warning: Please Install Web.Sh Globally After Setup'));
+    if (!fs.existsSync('/usr/bin/web-sh')) console.log(c.yellow('Warning: Please Install Web.Sh Globally After Setup'));
     console.log(c.green('Setting Up User Systemd Service...'));
     if (!fs.existsSync(dir)) execaSync('mkdir', [dir]);
     fs.writeFileSync(dir + '/websh.service', `\
