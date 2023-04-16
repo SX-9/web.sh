@@ -2,14 +2,16 @@
 Access Your Terminal From Anywhere
 ```bash
 # Install:
-sudo npm i -g @sx9dev/web.sh@latest && web-sh
+sudo npm i -g @sx9dev/web.sh@latest 
+# Runing:
+PASSWORD="password_here" web-sh
 ```
 # Docs
 
 ## Setup Autostart
 To Run Web.Sh On Startup Do This (**Linux Only**):
 ```bash
-web-sh setup
+PASSWORD="default_password_here" web-sh setup
 systemctl enable websh --user --now
 ```
 ---

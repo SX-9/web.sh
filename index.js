@@ -1,8 +1,9 @@
 #! /bin/node
 
-import express from 'express';
-import cors from 'cors';
 import { execaSync } from 'execa';
+import express from 'express';
+import rl from 'readline';
+import cors from 'cors';
 import c from 'chalk';
 import os from 'os';
 import fs from 'fs';
@@ -11,16 +12,18 @@ const pass = process.env.PASSWORD || 'HelloWorld';
 const app = express();
 
 if (process.argv[2] === 'setup') {
+    let dir = '/home/' + os.userInfo().username + '/.config/systemd/user';
     if (process.platform !== 'linux') process.exit(1);
     if (process?.getuid() === 0) process.exit(1);
     if (fs.existsSync('/usr/bin/web-sh')) console.log(c.yellow('Warning: Please Install Web.Sh Globally After Setup'));
     console.log(c.green('Setting Up User Systemd Service...'));
-    execaSync('mkdir', ['/home/' + os.userInfo().username + '/.config/systemd/user/']);
-    fs.writeFileSync('/home/' + os.userInfo().username + '/.config/systemd/user/websh.service', `\
+    if (!fs.existsSync(dir)) execaSync('mkdir', [dir]);
+    fs.writeFileSync(dir + '/websh.service', `\
 [Unit]
 Description=Autostart Web.Sh
 
 [Service]
+Environment="PASSWORD=${pass}"
 ExecStart=/usr/bin/web-sh
 
 [Install]
