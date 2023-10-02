@@ -1,9 +1,10 @@
 {
   "name": "@sx9dev/web.sh",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Access Your Terminal From Anywhere",
   "bin": {
-    "web-sh": "index.js"
+    "web-sh": "index.js",
+    "web-sh-client": "client.py"
   },
   "type": "module",
   "author": "sx9dev",

@@ -2,7 +2,6 @@
 
 import { execaSync } from 'execa';
 import express from 'express';
-import rl from 'readline';
 import cors from 'cors';
 import c from 'chalk';
 import os from 'os';
@@ -65,7 +64,9 @@ app.post('/run', (req, res) => {
     let out;
     
     try {
-        out = execaSync(req.body[0], req.body.slice(1));
+        out = execaSync(req.body[0], req.body.slice(1), {
+            input: req.query.stdin
+        });
         console.log(out.stdout || out.stderr);
         res.json({
             message: 'Success',
